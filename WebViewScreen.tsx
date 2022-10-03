@@ -17,6 +17,7 @@ const WebViewScreen = () => {
       source={{ uri: "https://giessdeinviertel.codeforleipzig.de" }}
       originWhitelist={whiteList}
       allowsBackForwardNavigationGestures
+      sharedCookiesEnabled
     />
   );
 };

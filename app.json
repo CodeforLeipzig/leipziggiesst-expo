@@ -1,10 +1,11 @@
 {
   "expo": {
-    "name": "Leipzig-Giesst",
+    "name": "Leipzig Giesst",
     "slug": "Leipzig-Giesst",
     "version": "1.0.0",
+    "owner": "leipziggiesstdevs",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/appicon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -18,16 +19,20 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.leipziggiesst.mobile",
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/appicon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.leipziggiesst.mobile"
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "extra": {
+      "eas": {
+        "projectId": "061ad976-2129-4bb7-861a-89c52ded10c7"
+      }
     }
   }
 }
