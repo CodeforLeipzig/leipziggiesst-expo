@@ -28,11 +28,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.leipziggiesst.mobile"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "061ad976-2129-4bb7-861a-89c52ded10c7"
-      }
+    }
     }
   }
 }
