@@ -20,7 +20,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.leipziggiesst.mobile",
+      "bundleIdentifier": "com.leipziggiesst.mobile"
     },
     "android": {
       "adaptiveIcon": {
