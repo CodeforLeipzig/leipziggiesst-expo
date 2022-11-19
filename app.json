@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Leipzig Giesst",
+    "name": "Leipzig gießt",
     "slug": "Leipzig-Giesst",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "owner": "leipziggiesstdevs",
     "orientation": "portrait",
     "icon": "./assets/appicon.png",
@@ -20,15 +20,22 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.leipziggiesst.mobile"
+      "bundleIdentifier": "de.leipziggiesst.mobile",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Zum Bestimmen deines Standorts auf der Karte."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/appicon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.leipziggiesst.mobile"
-    }
+      "package": "de.leipziggiesst.mobile"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "31230742-9f08-43ea-801d-e0115521b83c"
+      }
     }
   }
 }
