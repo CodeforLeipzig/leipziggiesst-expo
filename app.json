@@ -2,7 +2,7 @@
   "expo": {
     "name": "Leipzig gießt",
     "slug": "Leipzig-Giesst",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "owner": "leipziggiesstdevs",
     "orientation": "portrait",
     "icon": "./assets/appicon.png",
