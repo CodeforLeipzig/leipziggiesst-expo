@@ -14,7 +14,7 @@
  # Install yarn and pods dependencies.
  # If you're using Flutter or Swift 
  # just install pods by "pod install" command 
- ls && cd ../.. && npm install && npm run ioss
+ ls && cd ../.. && npm install && npm run ios
 
  echo "🎯 Stage: Post-clone is done .... "
 
