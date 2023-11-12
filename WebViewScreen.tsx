@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 const whiteList = [
   "https://giessdeinviertel.codeforleipzig.de",
   "https://leipziggiesst-login.codeforleipzig.de",
+  "https://www.giessdenkiez.de",
 ];
 
 const WebViewScreen = () => {
