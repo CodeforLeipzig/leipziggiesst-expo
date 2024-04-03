@@ -20,6 +20,10 @@
     "production": {
       "ios": {
         "ascAppId": "6443637713"
+      },
+      "android": {
+        "serviceAccountKeyPath": "/Users/joerg_p/Documents/leipziggiesst-0bcb775de04b",
+        "track": "internal"
       }
     }
   }

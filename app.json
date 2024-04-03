@@ -2,7 +2,7 @@
   "expo": {
     "name": "Leipzig gießt",
     "slug": "Leipzig-Giesst",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "owner": "leipziggiesstdevs",
     "orientation": "portrait",
     "icon": "./assets/appicon.png",
@@ -30,7 +30,8 @@
         "foregroundImage": "./assets/appicon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "de.leipziggiesst.mobile"
+      "package": "webviewgold.leipziggiesst",
+      "versionCode": 104
     },
     "extra": {
       "eas": {
