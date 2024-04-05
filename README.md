@@ -7,3 +7,12 @@ leipziggiesst mobile apps with [Expo](https://expo.dev)
 3. install dependencies `npm install`
 4. start the bundler with `npm run start` and scan the QR-Code with your phone to open the app in Expo Go
 
+## Config
+`eas update:configure`
+
+## Build
+`npx expo prebuild`
+`eas build --platform android`
+
+## Submit
+`eas submit --platform android --profile internal`

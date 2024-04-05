@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/31230742-9f08-43ea-801d-e0115521b83c"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -21,6 +22,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "de.leipziggiesst.mobile",
+      "buildNumber": "2",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "Zum Bestimmen deines Standorts auf der Karte."
       }
@@ -31,12 +33,15 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "webviewgold.leipziggiesst",
-      "versionCode": 104
+      "versionCode": 105
     },
     "extra": {
       "eas": {
         "projectId": "31230742-9f08-43ea-801d-e0115521b83c"
       }
+    },
+    "runtimeVersion": {
+      "policy": "nativeVersion"
     }
   }
 }
