@@ -16,7 +16,9 @@ leipziggiesst mobile apps with [Expo](https://expo.dev)
 * `npx expo-optimize`
 
 ## Build
-`eas build --platform android`
-
+* `eas build --platform android`
+* `eas build --platform ios`
+ 
 ## Submit
-`eas submit --platform android --profile internal`
+* `eas submit --platform android --profile internal`
+* `eas submit --platform ios --profile internal`

@@ -22,18 +22,18 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "de.leipziggiesst.mobile",
-      "buildNumber": "2",
+      "buildNumber": "3",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "Zum Bestimmen deines Standorts auf der Karte."
       }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/appicon.png",
+        "foregroundImage": "./assets/appicon-adaptive.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "webviewgold.leipziggiesst",
-      "versionCode": 107
+      "versionCode": 108
     },
     "extra": {
       "eas": {
