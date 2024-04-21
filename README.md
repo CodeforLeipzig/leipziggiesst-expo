@@ -10,8 +10,12 @@ leipziggiesst mobile apps with [Expo](https://expo.dev)
 ## Config
 `eas update:configure`
 
+
+## Optimize 
+* `npm install -g sharp-cli`
+* `npx expo-optimize`
+
 ## Build
-`npx expo prebuild`
 `eas build --platform android`
 
 ## Submit
