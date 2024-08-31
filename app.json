@@ -2,7 +2,7 @@
   "expo": {
     "name": "Leipzig gießt",
     "slug": "Leipzig-Giesst",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "owner": "leipziggiesstdevs",
     "orientation": "portrait",
     "icon": "./assets/appicon.png",
@@ -22,7 +22,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "de.leipziggiesst.mobile",
-      "buildNumber": "3",
+      "buildNumber": "5",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "Zum Bestimmen deines Standorts auf der Karte."
       }
@@ -33,7 +33,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "webviewgold.leipziggiesst",
-      "versionCode": 108
+      "versionCode": 115
     },
     "extra": {
       "eas": {

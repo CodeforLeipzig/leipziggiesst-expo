@@ -10,15 +10,22 @@ leipziggiesst mobile apps with [Expo](https://expo.dev)
 ## Config
 `eas update:configure`
 
+## Install
+`npx expo install`
+
+## Update
+`sudo npm install -g eas-cli`
+`npx expo install expo-updates`
+`npx eas update:configure`
 
 ## Optimize 
 * `npm install -g sharp-cli`
 * `npx expo-optimize`
 
 ## Build
-* `eas build --platform android`
-* `eas build --platform ios`
+* `npx eas build --platform android`
+* `npx eas build --platform ios`
  
 ## Submit
-* `eas submit --platform android --profile internal`
-* `eas submit --platform ios --profile internal`
+* `npx eas submit --platform android --profile internal`
+* `npx eas submit --platform ios --profile internal`
