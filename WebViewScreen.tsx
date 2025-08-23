@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { WebView } from "react-native-webview";
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import Geolocation from '@react-native-community/geolocation';
+import * as Location from 'expo-location';
 
 
 const whiteList = [
@@ -34,20 +34,20 @@ const WebViewScreen = () => {
           const eventTypes = [
             {
               event: 'getCurrentPosition',
-              fun: Geolocation.getCurrentPosition,
+              fun: Location.getCurrentPositionAsync,
               successCode: 'currentPosition',
               errorCode: 'currentPositionError'
             },
             {
               event: 'watchPosition',
-              fun: Geolocation.watchPosition, 
+              fun: Location.watchPositionAsync, 
               successCode: 'watchPosition',
               errorCode: 'watchPositionError'
             },
             {
               event: 'clearWatch',
-              fun: Geolocation.clearWatch,
-              input: (param: { watchID: number }) => param.watchID
+              fun: Location.stopLocationUpdatesAsync,
+              input: (param: { taskName: string }) => param.taskName
             },
           ]
           const postMessage = (msg: {}) => {
