@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import { WebView } from "react-native-webview";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Location from 'expo-location';
-
+import { initializeCache } from './cache-adapter';
 
 const whiteList = [
   "https://giessdeinviertel.codeforleipzig.de",
@@ -22,6 +22,50 @@ export const getGeoLocationJS = () => {
 
 const WebViewScreen = () => {
   const insets = useSafeAreaInsets();
+  const webViewRef = useRef(null);
+  const cacheRef = useRef(null);
+
+  useEffect(() => {
+    const setupCache = async () => {
+      cacheRef.current = await initializeCache();
+      await cacheRef.current.init();
+    };
+    setupCache();
+  }, []);
+
+  const handleWebViewMessage = async (event) => {
+    const { type, key, value } = JSON.parse(event.nativeEvent.data);
+    const cache = cacheRef.current;
+
+    try {
+      switch (type) {
+        case 'GET_CACHE':
+          const data = await cache.getItem(key);
+          webViewRef.current?.injectJavaScript(`
+            window.__cacheResponse = ${JSON.stringify(data)};
+            window.__cacheReady = true;
+          `);
+          break;
+        
+        case 'SET_CACHE':
+          await cache.setItem(key, value);
+          webViewRef.current?.injectJavaScript(`
+            window.__cacheSaved = true;
+          `);
+          break;
+        
+        case 'REMOVE_CACHE':
+          await cache.removeItem(key);
+          break;
+        
+        case 'CLEAR_CACHE':
+          await cache.clear();
+          break;
+      }
+    } catch (error) {
+      console.error('Cache operation failed:', error);
+    }
+  };
 
   return (
     <WebView
@@ -68,9 +112,7 @@ const WebViewScreen = () => {
           console.log(e);
         }
       }}
-      ref={ ref => {
-        webview = ref;
-      }}
+      ref={webViewRef}
       startInLoadingState={ true } 
       style={[styles.webView, { marginTop: insets.top }]}
       source={{ uri: "https://giessdeinviertel.codeforleipzig.de" }}
