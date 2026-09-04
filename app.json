@@ -2,16 +2,21 @@
   "expo": {
     "name": "Leipzig gießt",
     "slug": "Leipzig-Giesst",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "owner": "leipziggiesstdevs",
     "orientation": "portrait",
     "icon": "./assets/appicon.png",
     "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ]
+    ],
     "updates": {
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/31230742-9f08-43ea-801d-e0115521b83c"

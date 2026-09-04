@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import WebViewScreen from "./WebViewScreen";
 import * as Location from 'expo-location';
@@ -11,14 +11,14 @@ export default function App() {
 
   useEffect(() => {
     async function getCurrentLocation() {
-      
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
         setErrorMsg('Permission to access location was denied');
         return;
       }
-
-      let location = await Location.getCurrentPositionAsync({});
+      const location = await Location.getCurrentPositionAsync({
+        accuracy: Location.Accuracy.High,
+      });
       setLocation(location);
     }
 
