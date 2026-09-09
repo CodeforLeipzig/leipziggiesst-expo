@@ -20,6 +20,9 @@ leipziggiesst mobile apps with [Expo](https://expo.dev)
 
 ## Upgrade
 * [Upgrade Expo SDK](https://docs.expo.dev/workflow/upgrading-expo-sdk-walkthrough/)
+  * update to latest expo (e.g. by hover over version in package.json)
+  * `npx expo install --fix`
+  * `npx expo-doctor`
 
 ## Optimize 
 * `npm install -g sharp-cli`
