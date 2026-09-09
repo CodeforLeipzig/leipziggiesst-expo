@@ -29,3 +29,14 @@ leipziggiesst mobile apps with [Expo](https://expo.dev)
 ## Submit
 * `npx eas submit --platform android --profile internal`
 * `npx eas submit --platform ios --profile internal`
+
+## Run/Debug
+* install [Android Studio](https://developer.android.com/studio)
+  * start and install SDKs
+* install Java
+  * [SDKman](https://sdkman.io/install/)
+  * `sdk install java 23-tem` 
+* Connect Android device [with USB debugging](https://developer.android.com/studio/run/device#developer-device-options)
+* run
+  * `export ANDROID_HOME=~/Android/Sdk`
+  * `npx expo run:android`

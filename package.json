@@ -12,7 +12,7 @@
     "expo-location": "^18.1.6",
     "expo-splash-screen": "0.30.10",
     "expo-status-bar": "2.2.3",
-    "expo-updates": "~0.28.17",
+    "expo-updates": "~0.28.18",
     "metro": "0.82.5",
     "metro-cache": "0.82.5",
     "react": "19.0.0",
