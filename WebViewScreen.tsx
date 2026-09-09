@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import { WebView } from "react-native-webview";
-import React from "react";
+import React, { useRef } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Location from 'expo-location';
 
@@ -21,56 +21,87 @@ export const getGeoLocationJS = () => {
 };
 
 const WebViewScreen = () => {
+  const webViewRef = useRef<WebView>(null);
+  const locationSubscriptions = new Map<number, Location.LocationSubscription>();
+  let nextWatchId = 1;
   const insets = useSafeAreaInsets();
+
+  const handleMessage = async (event: any) => {
+    try {
+      const data = JSON.parse(event.nativeEvent.data);
+
+      switch (data.event) {
+        case 'getCurrentPosition': {
+          try {
+            const location = await Location.getCurrentPositionAsync({});
+
+            postMessage({
+              event: 'currentPosition',
+              data: location,
+            });
+          } catch (error) {
+            postMessage({
+              event: 'currentPositionError',
+              data: error,
+            });
+          }
+          break;
+        }
+        case 'watchPosition': {
+          const watchId = nextWatchId++;
+          try {
+            const subscription = await Location.watchPositionAsync(
+              {},
+              location => {
+                postMessage({
+                  event: 'watchPosition',
+                  watchId,
+                  data: location,
+                });
+              },
+              error => {
+                postMessage({
+                  event: 'watchPositionError',
+                  watchId,
+                  data: error,
+                });
+              }
+            );
+            locationSubscriptions.set(watchId, subscription);
+            postMessage({
+              event: 'watchPositionStarted',
+              watchId,
+            });
+          } catch (error) {
+            postMessage({
+              event: 'watchPositionError',
+              watchId,
+              data: error,
+            });
+          }
+          break;
+        }
+        case 'clearWatch': {
+          const subscription = locationSubscriptions.get(data.watchId);
+          if (subscription) {
+            subscription.remove();
+            locationSubscriptions.delete(data.watchId);
+          }
+          break;
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <WebView
+      ref={webViewRef}
       geolocationEnabled={ true }
       injectedJavaScript={ getGeoLocationJS() }
       javaScriptEnabled={ true }
-      onMessage={ event => {
-        try {
-          const data = JSON.parse(event.nativeEvent.data);
-          const eventTypes = [
-            {
-              event: 'getCurrentPosition',
-              fun: Location.getCurrentPositionAsync,
-              successCode: 'currentPosition',
-              errorCode: 'currentPositionError'
-            },
-            {
-              event: 'watchPosition',
-              fun: Location.watchPositionAsync, 
-              successCode: 'watchPosition',
-              errorCode: 'watchPositionError'
-            },
-            {
-              event: 'clearWatch',
-              fun: Location.stopLocationUpdatesAsync,
-              input: (param: { taskName: string }) => param.taskName
-            },
-          ]
-          const postMessage = (msg: {}) => {
-            webview.postMessage(JSON.stringify(msg));
-          }
-          const eventType = eventTypes.find(eventType => data?.event && data.event == eventType.event);
-          if (eventType) {
-            if (eventType.successCode) {
-              eventType.fun(
-                input => postMessage({ event: eventType.successCode, data: input }),
-                error => postMessage({ event: eventType.errorCode, data: error })
-              );
-            } else if (eventType.input) {
-              eventType.fun(eventType.input(data));
-            }
-          }    
-        } catch (e) {
-          console.log(e);
-        }
-      }}
-      ref={ ref => {
-        webview = ref;
-      }}
+      onMessage={handleMessage}
       startInLoadingState={ true } 
       style={[styles.webView, { marginTop: insets.top }]}
       source={{ uri: "https://giessdeinviertel.codeforleipzig.de" }}
